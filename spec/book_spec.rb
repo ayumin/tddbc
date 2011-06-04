@@ -4,9 +4,9 @@ require 'spec_helper'
 require 'book'
 
 describe Book do
-  describe "インスタンス化されたとき" do
+  describe "引数なしでインスタンス化されたとき" do
     before do
-      @book = Book.new
+      @book = Book.new()
     end
     context "id" do
       subject { @book.id }
@@ -23,6 +23,37 @@ describe Book do
     context "isbn" do
       subject { @book.isbn }
       it { should == "" }
+    end
+    context "status" do
+      subject { @book.status }
+      it { should == CirculationStatus::STOCKED }
+    end
+  end
+
+  describe "引数ありでインスタンス化されたとき" do
+    before do
+      @book = Book.new({:id    => "10",
+                        :title => "hoge",
+                        :author => "fuga",
+                        :isbn  => "123456789",
+                        :status => CirculationStatus::STOCKED,
+                        })
+    end
+    context "id" do
+      subject { @book.id }
+      it { should == "10" }
+    end
+    context "title" do
+      subject { @book.title }
+      it { should == "hoge" }
+    end
+    context "author" do
+      subject { @book.author }
+      it { should == "fuga" }
+    end
+    context "isbn" do
+      subject { @book.isbn }
+      it { should == "123456789" }
     end
     context "status" do
       subject { @book.status }

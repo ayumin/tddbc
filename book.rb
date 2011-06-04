@@ -3,17 +3,18 @@ require 'circulation_status'
 class Book
   attr_accessor :id, :title, :author, :isbn, :status
 
-  def initialize
+  def initialize( hash = {:id => "0", :title => "", :author => "", :isbn => "", :status => CirculationStatus::STOCKED
+} )
     # 書籍ID
-    @id = "0"
+    @id = hash[:id]
     # タイトル
-    @title = ""
+    @title = hash[:title]
     # 著者
-    @author = ""
+    @author = hash[:author]
     # ISBN code
-    @isbn = ""
+    @isbn = hash[:isbn]
     # 状態コード
-    @status = CirculationStatus::STOCKED
+    @status = hash[:status]
   end
 
   def eql?(other)
