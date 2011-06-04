@@ -25,11 +25,6 @@ describe Database do
         subject.datastore.class.should == File
       end
     end
-#    describe "datastore" do
-#      it do
-#        subject.datastore.class.should == File
-#      end
-#    end
   end
 
   describe "bookをaddした場合" do

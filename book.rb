@@ -5,15 +5,10 @@ class Book
 
   def initialize( hash = {:id => "0", :title => "", :author => "", :isbn => "", :status => CirculationStatus::STOCKED
 } )
-    # 書籍ID
-    @id = hash[:id]
-    # タイトル
-    @title = hash[:title]
-    # 著者
+    @id     = hash[:id]
+    @title  = hash[:title]
     @author = hash[:author]
-    # ISBN code
-    @isbn = hash[:isbn]
-    # 状態コード?
+    @isbn   = hash[:isbn]
     @status = hash.key?(:status) ? hash[:status] : CirculationStatus::STOCKED
   end
 
