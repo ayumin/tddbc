@@ -27,6 +27,11 @@ class Database
       @offset += LENGTH
     }
     @offset = 0
+
+    if block_given?
+      yield self
+      self.close
+    end
   end
 
   def add(book)

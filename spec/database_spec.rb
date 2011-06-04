@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'database'
 require 'book'
 TEM_DATASTORE = 'tmp.bin'
-describe Database do
+describe "Database をブロックなしで使用する場合" do
   before do
     @database = Database.new TEM_DATASTORE
   end
@@ -46,11 +46,21 @@ describe Database do
       subject.close
       expect{subject.add(Book.new)}.should raise_error
     end
-
   end
 
   after do
     FileUtils.rm(TEM_DATASTORE)
   end
 end
-
+describe "Database をブロックを使用して処理をする場合" do
+  it do
+    storebook = Book.new({:id=>"200", :title=>"tddbc2.0", :author=>"volpe_hd28v", :isbn=>"1234567890111"})
+    Database.new(TEM_DATASTORE) {|d| d.add(storebook); }
+    database = Database.new TEM_DATASTORE
+    findbook = database.find("200");
+    storebook.eql?(findbook).should be_true
+  end
+  after do
+    FileUtils.rm(TEM_DATASTORE)
+  end
+end
