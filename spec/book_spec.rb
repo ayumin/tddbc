@@ -16,7 +16,7 @@ describe Book do
       subject { @book.title }
       it { should == "" }
     end
-    context "autor" do
+    context "author" do
       subject { @book.author }
       it { should == "" }
     end
