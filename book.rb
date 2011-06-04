@@ -13,8 +13,8 @@ class Book
     @author = hash[:author]
     # ISBN code
     @isbn = hash[:isbn]
-    # 状態コード
-    @status = hash[:status]
+    # 状態コード?
+    @status = hash.key?(:status) ? hash[:status] : CirculationStatus::STOCKED
   end
 
   def eql?(other)
