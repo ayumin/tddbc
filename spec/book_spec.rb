@@ -2,7 +2,6 @@
 $:.unshift File.dirname(__FILE__)
 require 'spec_helper'
 require 'book'
-require 'circulation_status'
 
 describe Book do
   describe "インスタンス化されたとき" do
@@ -10,20 +9,33 @@ describe Book do
       @book = Book.new
     end
     subject {@book}
-    it do
-      subject.id.should == "0"
+    describe "id" do
+      it do
+        subject.id.should == "0"
+      end
     end
-    it do
-      subject.title.should == ""
+    describe "title" do
+      it do
+        subject.title.should == ""
+      end
     end
-    it do
-      subject.author.should == ""
+
+    describe "subject" do
+      it do
+        subject.author.should == ""
+      end
     end
-    it do
-      subject.isbn.should == ""
+
+    describe "isbn" do
+      it do
+        subject.isbn.should == ""
+      end
     end
-    it do
-      subject.status.should == CirculationStatus::STOCKED
+
+    describe "status" do
+      it do
+        subject.status.should == CirculationStatus::STOCKED
+      end
     end
   end
 end

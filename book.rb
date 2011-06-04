@@ -1,3 +1,5 @@
+require 'circulation_status'
+
 class Book
   attr_accessor :id, :title, :author, :isbn, :status
 
