@@ -4,6 +4,7 @@ require 'spec_helper'
 require 'database'
 require 'book'
 TEM_DATASTORE = 'tmp.bin'
+
 describe "Database をブロックなしで使用する場合" do
   before do
     @database = Database.new TEM_DATASTORE
@@ -42,7 +43,7 @@ describe "Database をブロックなしで使用する場合" do
 
   describe "close を呼び出した場合" do
     subject {@database}
-    it do
+    it "さらに add すると例外が飛ぶ" do
       subject.close
       expect{subject.add(Book.new)}.should raise_error
     end
