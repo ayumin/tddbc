@@ -3,12 +3,12 @@ $:.unshift File.dirname(__FILE__)
 require 'spec_helper'
 require 'database'
 require 'book'
-
+TEM_DATASTORE = 'tmp.bin'
 describe Database do
+  before do
+    @database = Database.new TEM_DATASTORE
+  end
   describe "インスタンス化されたとき" do
-    before do
-      @database = Database.new "book.bin"
-    end
     subject {@database}
     describe "keyMap" do
       it do
@@ -33,9 +33,6 @@ describe Database do
   end
 
   describe "bookをaddした場合" do
-    before do
-      @database = Database.new "book.bin"
-    end
     subject {@database}
     describe "findで取得した book と同一である" do
       it do
@@ -48,6 +45,8 @@ describe Database do
       end
     end
   end
-
+  after do
+    FileUtils.rm(TEM_DATASTORE)
+  end
 end
 
