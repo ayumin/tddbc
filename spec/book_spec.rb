@@ -19,19 +19,16 @@ describe Book do
         subject.title.should == ""
       end
     end
-
     describe "subject" do
       it do
         subject.author.should == ""
       end
     end
-
     describe "isbn" do
       it do
         subject.isbn.should == ""
       end
     end
-
     describe "status" do
       it do
         subject.status.should == CirculationStatus::STOCKED

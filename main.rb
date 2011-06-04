@@ -7,7 +7,7 @@ require "database"
 
 if __FILE__ == $PROGRAM_NAME
   abort "1.9 only" unless RUBY_VERSION >= "1.9"
-  d = Database.new
+  d = Database.new "book.bin"
   puts d.list
   b1 = Book.new
   b1.id = "001"

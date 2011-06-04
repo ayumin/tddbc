@@ -1,5 +1,4 @@
 class Database
-  DATASTORE_NAME = "book.bin"
   LEN_ID = 8
   LEN_TITLE = 512
   LEN_AUTHOR = 128
@@ -15,10 +14,10 @@ class Database
 
   attr_accessor :keyMap, :offset, :datastore
 
-  def initialize
+  def initialize (datastore_name)
     @keyMap = Hash.new
     @offset = 0
-    @datastore = File.open(DATASTORE_NAME, "a+b")
+    @datastore = File.open(datastore_name, "a+b")
     loop{
       @datastore.seek(@offset)
       b = @datastore.read(LEN_ID)
