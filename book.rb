@@ -18,36 +18,12 @@ class Book
 
   def eql?(other)
     return true if self.equal?(other)
-    return false if other.nil?
     return false if self.class != other.class
-
-    if author.nil?
-      return false unless other.author.nil?
-    else
-      return false unless author == other.author
-    end
-
-    if id.nil?
-      return false unless other.id.nil?
-    else
-      return false unless id == other.id
-    end
-
-    if isbn.nil?
-      return false unless other.isbn.nil?
-    else
-      return false unless isbn == other.isbn
-    end
-
-    return false unless status == other.status
-
-    if title.nil?
-      return false unless other.title.nil?
-    else
-      return false unless title == other.title
-    end
-
-    true
+    ( self.id == other.id and
+      self.title == other.title and
+      self.author == other.author and
+      self.isbn == other.isbn and
+      self.status == other.status )
   end
 
   def hash
