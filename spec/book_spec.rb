@@ -25,7 +25,7 @@ describe Book do
       it { should == "" }
     end
     context "status" do
-      subject { @book }
+      subject { @book.status }
       it { should == CirculationStatus::STOCKED }
     end
   end
