@@ -33,13 +33,22 @@ describe Database do
       it do
         book = Book.new
         book.id = "10"
-
         subject.add(book)
         found_book = subject.find(book.id)
         found_book.eql?(book).should be_true
       end
     end
   end
+
+  describe "close を呼び出した場合" do
+    subject {@database}
+    it do
+      subject.close
+      expect{subject.add(Book.new)}.should raise_error
+    end
+
+  end
+
   after do
     FileUtils.rm(TEM_DATASTORE)
   end

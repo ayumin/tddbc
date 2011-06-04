@@ -87,6 +87,10 @@ class Database
     book
   end
 
+  def close
+    @datastore.close
+  end
+
 end
 
 
