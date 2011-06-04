@@ -8,31 +8,25 @@ describe Book do
     before do
       @book = Book.new
     end
-    subject {@book}
-    describe "id" do
-      it do
-        subject.id.should == "0"
-      end
+    context "id" do
+      subject { @book.id }
+      it { should == "0" }
     end
-    describe "title" do
-      it do
-        subject.title.should == ""
-      end
+    context "title" do
+      subject { @book.title }
+      it { should == "" }
     end
-    describe "subject" do
-      it do
-        subject.author.should == ""
-      end
+    context "autor" do
+      subject { @book.author }
+      it { should == "" }
     end
-    describe "isbn" do
-      it do
-        subject.isbn.should == ""
-      end
+    context "isbn" do
+      subject { @book.isbn }
+      it { should == "" }
     end
-    describe "status" do
-      it do
-        subject.status.should == CirculationStatus::STOCKED
-      end
+    context "status" do
+      subject { @book }
+      it { should == CirculationStatus::STOCKED }
     end
   end
 end
