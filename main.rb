@@ -4,11 +4,10 @@ require "stringio"
 require "circulation_status"
 require "book"
 require "database"
+
 class Main
   class << self
     def book_to_database(path)
-      d = Database.new(path)
-      puts d.list
       b1 = Book.new({
         :id => "001",
         :title=>"刀語 第一話 絶刀・鉋",
@@ -29,9 +28,13 @@ class Main
         :isbn=>"9784062836197",
         :status=>CirculationStatus::LENDING
       })
-      [b1,b2,b3].each{ |b| d.add(b) }
-      puts d.list
-      p d.find("002")
+
+      Database.new(path){|d|
+        puts d.list
+        [b1,b2,b3].each{ |b| d.add(b) }
+        puts d.list
+        p d.find("002")
+      }
     end
   end
 end
